@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tool", "tool", "{77AA8CD3-4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{7AD53F39-372B-47C0-99F9-2BE859E4D6BB}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CurDb", "db\CurDb\CurDb.sqlproj", "{AEC26A2B-AD02-436D-BEED-48636ADFE965}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,11 +33,18 @@ Global
 		{98450F12-FEA3-4574-8C49-9971811138AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98450F12-FEA3-4574-8C49-9971811138AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98450F12-FEA3-4574-8C49-9971811138AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEC26A2B-AD02-436D-BEED-48636ADFE965}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEC26A2B-AD02-436D-BEED-48636ADFE965}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEC26A2B-AD02-436D-BEED-48636ADFE965}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AEC26A2B-AD02-436D-BEED-48636ADFE965}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEC26A2B-AD02-436D-BEED-48636ADFE965}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEC26A2B-AD02-436D-BEED-48636ADFE965}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{98450F12-FEA3-4574-8C49-9971811138AE} = {45CF8B84-8A94-4B78-A4DB-0EDE8FECA72C}
+		{AEC26A2B-AD02-436D-BEED-48636ADFE965} = {EC5C903F-B713-4EEB-86E3-693C108D68D0}
 	EndGlobalSection
 EndGlobal
