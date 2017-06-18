@@ -3,8 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{45CF8B84-8A94-4B78-A4DB-0EDE8FECA72C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "appsrv", "app\appsrv\appsrv.csproj", "{98450F12-FEA3-4574-8C49-9971811138AE}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98450F12-FEA3-4574-8C49-9971811138AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98450F12-FEA3-4574-8C49-9971811138AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98450F12-FEA3-4574-8C49-9971811138AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98450F12-FEA3-4574-8C49-9971811138AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{98450F12-FEA3-4574-8C49-9971811138AE} = {45CF8B84-8A94-4B78-A4DB-0EDE8FECA72C}
 	EndGlobalSection
 EndGlobal
