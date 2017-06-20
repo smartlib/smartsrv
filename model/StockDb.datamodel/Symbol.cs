@@ -7,7 +7,12 @@ namespace Data
 {
     public partial class Symbol
     {
-        [Column(TypeName = "varchar(20)")]
+        public Symbol()
+        {
+            ImportData = new HashSet<ImportData>();
+        }
+
+        [Column(TypeName = "varchar(10)")]
         [Key]
         public string Code { get; set; }
         [Required]
@@ -17,6 +22,8 @@ namespace Data
         [Column("RCurr", TypeName = "varchar(10)")]
         public string Rcurr { get; set; }
 
+        [InverseProperty("SymbolCodeNavigation")]
+        public virtual ICollection<ImportData> ImportData { get; set; }
         [ForeignKey("Lcurr")]
         [InverseProperty("SymbolLcurrNavigation")]
         public virtual Currency LcurrNavigation { get; set; }

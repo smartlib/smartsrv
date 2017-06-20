@@ -9,6 +9,7 @@ namespace Data
         public virtual DbSet<Currency> Currency { get; set; }
         public virtual DbSet<DataSource> DataSource { get; set; }
         public virtual DbSet<ImportData> ImportData { get; set; }
+        public virtual DbSet<ImportDataHistory> ImportDataHistory { get; set; }
         public virtual DbSet<Interval> Interval { get; set; }
         public virtual DbSet<Symbol> Symbol { get; set; }
 
@@ -20,11 +21,6 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ImportData>(entity =>
-            {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-            });
-
             modelBuilder.Entity<Interval>(entity =>
             {
                 entity.Property(e => e.Days)

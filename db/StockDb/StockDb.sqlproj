@@ -65,12 +65,15 @@
   <ItemGroup>
     <None Include="StockDb.publish.xml" />
     <None Include="dbo\Scripts\LoadIntervals.sql" />
+    <None Include="reverse.scmp" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Symbol.sql" />
     <Build Include="dbo\Tables\Currency.sql" />
     <Build Include="dbo\Tables\Interval.sql" />
     <Build Include="dbo\Tables\DataSource.sql" />
+    <Build Include="dbo\Tables\ImportDataHistory.sql" />
+    <Build Include="dbo\Tables\ImportData.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeployment.sql" />

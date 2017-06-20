@@ -7,6 +7,11 @@ namespace Data
 {
     public partial class Interval
     {
+        public Interval()
+        {
+            ImportData = new HashSet<ImportData>();
+        }
+
         [Column(TypeName = "varchar(10)")]
         [Key]
         public string Code { get; set; }
@@ -18,5 +23,8 @@ namespace Data
         public double? Weeks { get; set; }
         public double? Months { get; set; }
         public double? Years { get; set; }
+
+        [InverseProperty("IntervalCodeNavigation")]
+        public virtual ICollection<ImportData> ImportData { get; set; }
     }
 }
