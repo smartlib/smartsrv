@@ -61,6 +61,7 @@
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Scripts" />
+    <Folder Include="dbo\User Defined Types\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StockDb.publish.xml" />
@@ -74,6 +75,7 @@
     <Build Include="dbo\Tables\DataSource.sql" />
     <Build Include="dbo\Tables\ImportDataHistory.sql" />
     <Build Include="dbo\Tables\ImportData.sql" />
+    <Build Include="dbo\User Defined Types\Price.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeployment.sql" />
