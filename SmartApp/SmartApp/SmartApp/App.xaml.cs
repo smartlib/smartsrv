@@ -31,6 +31,16 @@ namespace SmartApp
                         Title = "About",
                         Icon = Device.OnPlatform("tab_about.png",null,null)
                     },
+                    new NavigationPage(new Page1())
+                    {
+                        Title = "p1",
+                        Icon = Device.OnPlatform("tab_about.png",null,null)
+                    },
+                    new NavigationPage(new StocksView1())
+                    {
+                        Title = "About",
+                        Icon = Device.OnPlatform("tab_about.png",null,null)
+                    },
                 }
             };
         }

@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikChart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:local="clr-namespace:SmartApp.Views"
+             Title="Stocks"
+             x:Class="SmartApp.Views.StocksView1">
+    <ContentPage.BindingContext>
+        <local:StocksViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="RedColor">#FFEC1C23</Color>
+            <Color x:Key="GreenColor">#FF009245</Color>
+            <local:BoolToImageSourceConverter x:Key="BoolToImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <telerikDataControls:RadListView x:Name="CompaniesListView" ItemsSource="{Binding Companies}" SelectionMode="None">
+            <telerikDataControls:RadListView.LayoutDefinition>
+                <telerikListView:ListViewLinearLayout ItemLength="150"/>
+            </telerikDataControls:RadListView.LayoutDefinition>
+            <telerikDataControls:RadListView.ItemTemplate>
+                <DataTemplate>
+                    <telerikListView:ListViewTemplateCell x:Name="aaa">
+                        <telerikListView:ListViewTemplateCell.View>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid>
+                                    <Grid.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness" Android="16" iOS="15" WinPhone="16" />
+                                    </Grid.Margin>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="3*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0" Margin="10,0,0,0" VerticalOptions="End">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding Name}" Grid.Row="0" Opacity="0.6" FontSize="22" VerticalTextAlignment="End" />
+                                        <Grid Grid.Row="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="{Binding LatestStockCloseValue}" FontSize="28" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                                            <Image Grid.Column="1" Margin="0,10,0,0" Source="{Binding IsValueGoingUp, Converter={StaticResource BoolToImageSourceConverter}" />
+                                        </Grid>
+                                        <Grid Grid.Row="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" TextColor="{StaticResource GreenColor}" FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding DifferenceInPercentage, StringFormat='{}{0:+0.##;-0.##} %'}">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding IsValueGoingUp}" Value="False">
+                                                        <Setter Property="TextColor" Value="{StaticResource RedColor}" />
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                            <Label Grid.Column="1" TextColor="{StaticResource GreenColor}" FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{Binding LatestStockVolume, StringFormat='{}{0:0,,.##} M'}">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding IsValueGoingUp}" Value="False">
+                                                        <Setter Property="TextColor" Value="{StaticResource RedColor}" />
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                        </Grid>
+                                    </Grid>
+                                    <telerikChart:RadCartesianChart Grid.Column="1" Margin="0,0,0,-4" NativeControlLoaded="RadCartesianChart_NativeControlLoaded">
+                                        <telerikChart:RadCartesianChart.HorizontalAxis>
+                                            <telerikChart:DateTimeContinuousAxis MajorStepUnit="Day" ShowLabels="False" MajorTickThickness="0" LineColor="Transparent" />
+                                        </telerikChart:RadCartesianChart.HorizontalAxis>
+                                        <telerikChart:RadCartesianChart.VerticalAxis>
+                                            <telerikChart:NumericalAxis ShowLabels="False" MajorTickThickness="0" LineColor="Transparent" />
+                                        </telerikChart:RadCartesianChart.VerticalAxis>
+                                        <telerikChart:RadCartesianChart.Series>
+                                            <telerikChart:AreaSeries ItemsSource="{Binding StockData}" Fill="{Binding CompanyColor}">
+                                                <telerikChart:AreaSeries.ValueBinding>
+                                                    <telerikChart:PropertyNameDataPointBinding PropertyName="CloseValue"/>
+                                                </telerikChart:AreaSeries.ValueBinding>
+                                                <telerikChart:AreaSeries.CategoryBinding>
+                                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                                </telerikChart:AreaSeries.CategoryBinding>
+                                            </telerikChart:AreaSeries>
+                                        </telerikChart:RadCartesianChart.Series>
+                                    </telerikChart:RadCartesianChart>
+                                </Grid>
+                                <BoxView Grid.Row="1" HeightRequest="1" Color="#FFE0E0E0">
+                                    <BoxView.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness" Android="16,0,16,0" iOS="15,0,15,0" WinPhone="16,0,16,0" />
+                                    </BoxView.Margin>
+                                </BoxView>
+                            </Grid>
+                        </telerikListView:ListViewTemplateCell.View>
+                    </telerikListView:ListViewTemplateCell>
+                </DataTemplate>
+            </telerikDataControls:RadListView.ItemTemplate>
+        </telerikDataControls:RadListView>
+    </Grid>
+</ContentPage>
